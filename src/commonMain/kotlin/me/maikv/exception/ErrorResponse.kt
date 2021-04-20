@@ -1,4 +1,4 @@
-package exception
+package me.maikv.exception
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerialName

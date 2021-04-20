@@ -1,4 +1,4 @@
-package wrapperInterfaces
+package me.maikv.wrapperInterfaces
 
 interface CertificationsWrapper {
     suspend fun getMovieCertifications(): String

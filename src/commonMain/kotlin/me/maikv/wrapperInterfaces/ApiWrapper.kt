@@ -1,6 +1,6 @@
-package wrapperInterfaces
+package me.maikv.wrapperInterfaces
 
-import wrapperImplementations.ApiImplementation
+import me.maikv.wrapperImplementations.ApiImplementation
 
 interface ApiWrapper {
     companion object {

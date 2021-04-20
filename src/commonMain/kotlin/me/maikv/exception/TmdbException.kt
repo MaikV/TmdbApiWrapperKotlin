@@ -1,4 +1,4 @@
-package exception
+package me.maikv.exception
 
 import io.ktor.client.features.*
 

@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform") version "1.4.32"
     kotlin("plugin.serialization") version "1.4.32"
+    id("com.codingfeline.buildkonfig") version "0.7.0"
 }
 
 group = "me.maikv"
@@ -34,8 +35,6 @@ kotlin {
         isMingwX64 -> mingwX64("native")
         else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
     }
-
-
     sourceSets {
         val ktorVersion = "1.5.3"
         val logbackVersion = "1.2.3"
@@ -78,5 +77,23 @@ kotlin {
         }
         val nativeMain by getting
         val nativeTest by getting
+    }
+}
+
+buildkonfig {
+    packageName = "me.maikv"
+
+    defaultConfigs {
+        val file = rootProject.file("key.properties")
+
+        val keyValuePairs = if (file.exists()) {
+            file.readLines().map {
+                val splitKeyValue = it.split("=")
+                Pair(splitKeyValue[0], splitKeyValue[1])
+            }
+        } else return@defaultConfigs
+
+        val apiKey = keyValuePairs.first { it.first == "apiKey" }.second
+        buildConfigField(com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING, "ApiKey", apiKey)
     }
 }

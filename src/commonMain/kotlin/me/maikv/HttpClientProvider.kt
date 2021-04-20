@@ -1,5 +1,7 @@
-import exception.ErrorResponse
-import exception.TmdbException
+package me.maikv
+
+import me.maikv.exception.ErrorResponse
+import me.maikv.exception.TmdbException
 import io.ktor.client.*
 import io.ktor.client.features.*
 import io.ktor.client.features.json.*
@@ -8,7 +10,6 @@ import io.ktor.client.features.logging.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
 import kotlinx.serialization.decodeFromString
-
 
 internal fun createHttpClient(apiKey: String): HttpClient = HttpClient {
     install(DefaultRequest) {

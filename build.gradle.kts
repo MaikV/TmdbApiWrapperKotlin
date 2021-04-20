@@ -83,10 +83,13 @@ kotlin {
 buildkonfig {
     packageName = "me.maikv"
     val file = rootProject.file("key.properties")
-    val keyValuePairs = file.readLines().map {
-        val splitKeyValue = it.split("=")
-        Pair(splitKeyValue[0], splitKeyValue[1])
-    }
+
+    val keyValuePairs = if (file.exists()) {
+        file.readLines().map {
+            val splitKeyValue = it.split("=")
+            Pair(splitKeyValue[0], splitKeyValue[1])
+        }
+    } else return@buildkonfig
     val apiKey = keyValuePairs.first { it.first == "apiKey" }.second
     defaultConfigs {
         buildConfigField(com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING, "ApiKey", apiKey)

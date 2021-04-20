@@ -1,5 +1,5 @@
 import kotlinx.coroutines.runBlocking
-import wrapperInterfaces.ApiWrapper
+import me.maikv.wrapperInterfaces.ApiWrapper
 import kotlin.test.Test
 
 class MyTest {

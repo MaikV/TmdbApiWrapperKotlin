@@ -1,8 +1,8 @@
-package wrapperImplementations
+package me.maikv.wrapperImplementations
 
 import io.ktor.client.*
 import io.ktor.client.request.*
-import wrapperInterfaces.CertificationsWrapper
+import me.maikv.wrapperInterfaces.CertificationsWrapper
 
 internal class CertificationsImplementation(private val httpClient: HttpClient): CertificationsWrapper {
     override suspend fun getMovieCertifications(): String = httpClient.get(path = "/3/certification/movie/list")

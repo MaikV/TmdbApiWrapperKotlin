@@ -1,7 +1,7 @@
-package wrapperImplementations
+package me.maikv.wrapperImplementations
 
 import io.ktor.client.*
-import wrapperInterfaces.ChangesWrapper
+import me.maikv.wrapperInterfaces.ChangesWrapper
 
 internal class ChangesImplementation(private val httpClient: HttpClient): ChangesWrapper {
     override suspend fun getMovieChangeList() {

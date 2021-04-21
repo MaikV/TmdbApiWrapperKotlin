@@ -25,6 +25,13 @@ kotlin {
             commonWebpackConfig {
                 cssSupport.enabled = true
             }
+            testTask {
+                useKarma {
+                    useFirefox()
+//                    useChrome()
+//                    useSafari()
+                }
+            }
         }
     }
     val hostOs = System.getProperty("os.name")

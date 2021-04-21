@@ -21,8 +21,6 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-    - name: Modify Firefox for JsTest
-      run: export DISPLAY=:0.0 && echo $DISPLAY
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle

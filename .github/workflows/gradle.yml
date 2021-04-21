@@ -21,9 +21,9 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-    - name: Install Firefox for JsTest
-      run: sudo apt-get update && sudo apt-get install -y firefox
+    - name: Modify Firefox for JsTest
+      run: export DISPLAY=:0
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
-      run: ./gradlew build
+      run: ./gradlew jsTest

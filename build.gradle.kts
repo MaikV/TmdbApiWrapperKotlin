@@ -25,6 +25,11 @@ kotlin {
             commonWebpackConfig {
                 cssSupport.enabled = true
             }
+            testTask {
+                useKarma {
+                    usePhantomJS()
+                }
+            }
         }
     }
     val hostOs = System.getProperty("os.name")

@@ -2,12 +2,14 @@ package me.maikv.wrapperImplementations
 
 import io.ktor.client.*
 import io.ktor.client.request.*
+import me.maikv.datatransferobjects.MovieCertifications
+import me.maikv.datatransferobjects.TvCertifications
 import me.maikv.wrapperInterfaces.CertificationsWrapper
 
 internal class CertificationsImplementation(private val httpClient: HttpClient): CertificationsWrapper {
-    override suspend fun getMovieCertifications(): String = httpClient.get(path = "/3/certification/movie/list")
+    override val basePath: String = "/3/certification"
 
-    override suspend fun getTvCertifications() {
-        TODO("Not yet implemented")
-    }
+    override suspend fun getMovieCertifications(): MovieCertifications = httpClient.get(path = "$basePath/movie/list")
+
+    override suspend fun getTvCertifications(): TvCertifications = httpClient.get(path = "$basePath/tv/list")
 }

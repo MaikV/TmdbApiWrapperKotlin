@@ -43,6 +43,7 @@ kotlin {
     sourceSets {
         val ktorVersion = "1.5.3"
         val logbackVersion = "1.2.3"
+        val coroutinesVersion = "1.4.3"
         val commonMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
@@ -51,7 +52,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-logging:$ktorVersion")
 //                implementation("io.ktor:ktor-client-auth:$ktorVersion")
 
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
             }
         }
         val commonTest by getting {
@@ -68,11 +69,14 @@ kotlin {
         val jvmTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion")
+                implementation("io.ktor:ktor-client-mock:$ktorVersion")
             }
         }
         val jsMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-js:$ktorVersion")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-js:$coroutinesVersion")
             }
         }
         val jsTest by getting {
@@ -80,7 +84,11 @@ kotlin {
                 implementation(kotlin("test-js"))
             }
         }
-        val nativeMain by getting
+        val nativeMain by getting {
+            dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:$coroutinesVersion")
+            }
+        }
         val nativeTest by getting
     }
 }

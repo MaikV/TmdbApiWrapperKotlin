@@ -1,9 +1,14 @@
 package me.maikv.wrapperImplementations
 
-import io.ktor.client.*
+import io.ktor.client.HttpClient
 import me.maikv.wrapperInterfaces.ChangesWrapper
 
-internal class ChangesImplementation(private val httpClient: HttpClient): ChangesWrapper {
+internal class ChangesImplementation(
+    @Suppress("UnusedPrivateMember") private val httpClient: HttpClient
+) : ChangesWrapper {
+    override val basePath: String
+        get() = TODO("Not yet implemented")
+
     override suspend fun getMovieChangeList() {
         TODO("Not yet implemented")
     }

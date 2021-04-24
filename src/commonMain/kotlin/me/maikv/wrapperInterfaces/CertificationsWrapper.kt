@@ -1,6 +1,9 @@
 package me.maikv.wrapperInterfaces
 
-interface CertificationsWrapper {
-    suspend fun getMovieCertifications(): String
-    suspend fun getTvCertifications()
+import me.maikv.datatransferobjects.MovieCertifications
+import me.maikv.datatransferobjects.TvCertifications
+
+interface CertificationsWrapper: BasePath {
+    suspend fun getMovieCertifications(): MovieCertifications
+    suspend fun getTvCertifications(): TvCertifications
 }

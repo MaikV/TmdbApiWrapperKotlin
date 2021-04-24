@@ -29,6 +29,7 @@ data class MovieCertificationValues(
     val gb: List<Certification>,
     @SerialName("HU")
     val hu: List<Certification>,
+    @Suppress("ConstructorParameterNaming")
     @SerialName("IN")
     val `in`: List<Certification>,
     @SerialName("IT")

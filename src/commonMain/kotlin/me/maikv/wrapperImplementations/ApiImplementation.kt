@@ -1,6 +1,6 @@
 package me.maikv.wrapperImplementations
 
-import io.ktor.client.*
+import io.ktor.client.HttpClient
 import me.maikv.HttpClientProvider
 import me.maikv.wrapperInterfaces.ApiWrapper
 import me.maikv.wrapperInterfaces.CertificationsWrapper

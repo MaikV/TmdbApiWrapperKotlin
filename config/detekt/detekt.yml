@@ -629,6 +629,7 @@ style:
     excludeCommentStatements: false
   MayBeConst:
     active: true
+    excludes: ['**/build/**']
   ModifierOrder:
     active: true
   MultilineLambdaItParameter:
@@ -636,7 +637,7 @@ style:
   NestedClassesVisibility:
     active: true
   NewLineAtEndOfFile:
-    active: true
+    active: false
   NoTabs:
     active: false
   OptionalAbstractKeyword:

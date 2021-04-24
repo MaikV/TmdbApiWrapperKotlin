@@ -11,13 +11,13 @@ version = "1.0-SNAPSHOT"
 repositories {
     mavenCentral()
     // Needed by detekt for html stuff like generating the config file
-//    jcenter {
-//        content {
-//            // Only download the 'kotlinx-html-jvm' module from JCenter, but nothing else.
-//            // detekt needs 'kotlinx-html-jvm' for the HTML report.
-//            includeModule("org.jetbrains.kotlinx", "kotlinx-html-jvm")
-//        }
-//    }
+    jcenter {
+        content {
+            // Only download the 'kotlinx-html-jvm' module from JCenter, but nothing else.
+            // detekt needs 'kotlinx-html-jvm' for the HTML report.
+            includeModule("org.jetbrains.kotlinx", "kotlinx-html-jvm")
+        }
+    }
 }
 
 kotlin {

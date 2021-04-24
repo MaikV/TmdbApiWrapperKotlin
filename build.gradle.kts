@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform") version "1.4.32"
     kotlin("plugin.serialization") version "1.4.32"
     id("com.codingfeline.buildkonfig") version "0.7.0"
+    id("io.gitlab.arturbosch.detekt") version "1.16.0"
 }
 
 group = "me.maikv"
@@ -9,6 +10,14 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+    // Needed by detekt for html stuff like generating the config file
+//    jcenter {
+//        content {
+//            // Only download the 'kotlinx-html-jvm' module from JCenter, but nothing else.
+//            // detekt needs 'kotlinx-html-jvm' for the HTML report.
+//            includeModule("org.jetbrains.kotlinx", "kotlinx-html-jvm")
+//        }
+//    }
 }
 
 kotlin {
@@ -44,6 +53,7 @@ kotlin {
         val ktorVersion = "1.5.3"
         val logbackVersion = "1.2.3"
         val coroutinesVersion = "1.4.3"
+        val coroutinesNativeVersion = "1.3.8"
         val commonMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
@@ -70,7 +80,7 @@ kotlin {
             dependencies {
                 implementation(kotlin("test-junit"))
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion")
-                implementation("io.ktor:ktor-client-mock:$ktorVersion")
+                implementation("io.ktor:ktor-client-mock-jvm:$ktorVersion")
             }
         }
         val jsMain by getting {
@@ -86,7 +96,7 @@ kotlin {
         }
         val nativeMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:$coroutinesVersion")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:$coroutinesNativeVersion")
             }
         }
         val nativeTest by getting

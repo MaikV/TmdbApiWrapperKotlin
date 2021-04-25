@@ -1,21 +1,33 @@
 package me.maikv.wrapperImplementations
 
 import io.ktor.client.engine.mock.respond
-import io.ktor.client.features.DefaultRequest
-import io.ktor.client.features.get
+import io.ktor.client.engine.mock.respondBadRequest
 import io.ktor.client.features.json.serializer.KotlinxSerializer
 import io.ktor.http.HttpMethod
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.decodeFromString
-import me.maikv.HttpClientProvider
 import me.maikv.datatransferobjects.MovieCertifications
 import me.maikv.datatransferobjects.TvCertifications
 import me.maikv.shared.createTestHttpClient
 import me.maikv.shared.defaultContentTypeHeader
 
 internal class CertificationsImplementationTest {
+    @Test
+    fun getBasePath() {
+        // GIVEN
+        val certificationsImplementation = CertificationsImplementation(createTestHttpClient({
+            respondBadRequest()
+        }))
+
+        // WHEN
+        val basePath = certificationsImplementation.basePath
+
+        // THEN
+        val expectedBasePath = "/3/certification"
+        assertEquals(expectedBasePath, basePath)
+    }
 
     @Test
     fun getMovieCertifications() = runBlocking {
